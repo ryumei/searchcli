@@ -7,10 +7,7 @@
 import logging
 import logging.config
 import os
-try:
-    from configparser import ConfigParser
-except ImportError:
-    from ConfigParser import ConfigParser
+from six.moves.configparser import ConfigParser
 from argparse import ArgumentParser
 from splunkutils.search import main
 
@@ -29,7 +26,7 @@ def load_config(conf_path):
     return conf
 
 if __name__ == '__main__':
-    parser = ArgumentParser('Reputation Checker')
+    parser = ArgumentParser('Splunk search commander')
     parser.add_argument('-c', dest='conf',
         help='Path to config file', default=DEFAULT_CONF)
     parser.add_argument('--earliest', dest='earliest', default=None,
